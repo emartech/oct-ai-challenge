@@ -1,9 +1,5 @@
 # AI Agent Development
 
-> Build autonomous AI agents that can perform complex, multi-step tasks
-
-## Overview
-
 AI agents are autonomous systems that can understand goals, plan actions, and execute tasks with minimal human intervention.
 
 ## Examples

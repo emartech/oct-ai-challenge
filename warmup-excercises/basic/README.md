@@ -1,9 +1,5 @@
 # Basic AI Interactions
 
-> Start with fundamental AI interactions and simple prompt engineering
-
-## Overview
-
 Learn how to make basic requests to AI models using system and user prompts. This exercise demonstrates the simplest form of AI interaction - sending a prompt and receiving a response.
 
 ## Examples
