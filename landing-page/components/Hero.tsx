@@ -99,7 +99,10 @@ export default function Hero() {
               Are you interested in participating?
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-oct-blue hover:bg-oct-blue/90 text-white px-8 py-4 rounded-xl text-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg">
+              <button 
+                onClick={() => window.open('https://docs.google.com/forms/d/e/1FAIpQLSf9_3ndaZ2eUfhls4UO7d3ucEcpahRlkN0T9Rrr1eAR_K2CRg/viewform?usp=header', '_blank')}
+                className="bg-oct-blue hover:bg-oct-blue/90 text-white px-8 py-4 rounded-xl text-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg cursor-pointer"
+              >
                 Hell yeah!
               </button>
             </div>
