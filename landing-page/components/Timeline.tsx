@@ -5,7 +5,7 @@ export default function Timeline() {
 	<div className="mt-16 w-full bg-oct-blue/20 backdrop-blur-sm py-8 rounded-2xl">
 	  <div className="max-w-6xl mx-auto px-4">
 		<div className="p-8">
-		  <h3 className="text-white text-xl font-semibold mb-6 text-center">Challenge Timeline</h3>
+		  <h3 className="text-white text-xl font-semibold mb-6 text-center">Timeline</h3>
 		  <div className="relative flex flex-col md:flex-row items-stretch justify-between gap-4 text-center">
 			{CHALLENGE_CONFIG.timeline.milestones.map((milestone, index) => (
 			  <div key={milestone.date} className="flex flex-col items-center relative z-10 flex-1 min-w-0">
