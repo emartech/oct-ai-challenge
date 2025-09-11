@@ -24,7 +24,7 @@ Build AI agents with tools (Calculator & Search) using LangChain and Vercel AI S
 *(Coming soon)* Evaluate and benchmark AI model performance.
 
 ### 5️⃣ [Prompt Injection](./prompt-injection/)
-*(Coming soon)* Security considerations and defense techniques.
+Learn about prompt injection vulnerabilities and how to defend against them in AI applications.
 
 ### 6️⃣ [Integration with Codex](./integration-with-codex/)
 *(Coming soon)* AI capabilities with code generation and understanding.
