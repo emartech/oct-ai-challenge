@@ -103,7 +103,7 @@ export const CHALLENGE_CONFIG = {
             {
                 date: "Oct 13",
                 label: "Foundation exercises open",
-                description: "All foundation exercises available.",
+                description: "AI access provided for participants, all foundation exercises available.",
                 type: "foundation"
             },
             {

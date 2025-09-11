@@ -6,9 +6,9 @@ export default function Timeline() {
 	  <div className="max-w-6xl mx-auto px-4">
 		<div className="p-8">
 		  <h3 className="text-white text-xl font-semibold mb-6 text-center">Challenge Timeline</h3>
-		  <div className="relative flex flex-col md:flex-row items-center justify-between gap-4 text-center">
+		  <div className="relative flex flex-col md:flex-row items-stretch justify-between gap-4 text-center">
 			{CHALLENGE_CONFIG.timeline.milestones.map((milestone, index) => (
-			  <div key={milestone.date} className="flex flex-col items-center relative z-10">
+			  <div key={milestone.date} className="flex flex-col items-center relative z-10 flex-1 min-w-0">
                 <span className="text-white font-medium mb-2">{milestone.date}</span>
 				<div className={`w-4 h-4 rounded-full mb-2 shadow-lg ${
 				  milestone.type === 'foundation' 
@@ -18,8 +18,8 @@ export default function Timeline() {
 					: 'bg-gray-500'
 				}`}></div>
 				
-				<span className="text-white/90 text-sm">{milestone.label}</span>
-                <span className="text-oct-blue/90 text-sm">{milestone.description}</span>
+				<span className="text-white/90 text-sm mb-1">{milestone.label}</span>
+                <span className="text-oct-blue/90 text-sm px-2">{milestone.description}</span>
 			  </div>
 			))}
 			{/* Connecting line behind all dots */}
