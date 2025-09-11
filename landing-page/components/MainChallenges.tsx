@@ -3,14 +3,17 @@ import { CHALLENGE_CONFIG } from '../config/challenges'
 export default function MainChallenges() {
   return (
 	<div className="mb-16">
-	  <div className="flex items-center justify-center mb-8">
-		<div className="bg-oct-blue/20 backdrop-blur-sm rounded-2xl px-6 py-3">
-		  <h3 className="text-white text-2xl font-semibold flex items-center gap-3">
+	  <div className="text-center mb-8">
+		<div className="bg-oct-blue/20 backdrop-blur-sm rounded-2xl px-6 py-6 max-w-4xl mx-auto">
+		  <h3 className="text-white text-2xl font-semibold flex items-center justify-center gap-3 mb-3">
 			{CHALLENGE_CONFIG.mainChallenges.title}
 			<span className="bg-oct-blue px-3 py-1 rounded-full text-sm">
 			  Starting {CHALLENGE_CONFIG.mainChallenges.startDate}
 			</span>
 		  </h3>
+		  <p className="text-white/80 text-base">
+			Complete challenges to earn points that will be displayed on a public leaderboard. Compete with other participants for the top spot!
+		  </p>
 		</div>
 	  </div>
 	  

@@ -1,8 +1,9 @@
 import { CHALLENGE_CONFIG } from '../config/challenges'
 
 export default function FoundationExercises() {
-  // Check if submission period is active
+  // Check if foundation exercises period is active
   const now = new Date()
+  const isExercisePeriodActive = now >= CHALLENGE_CONFIG.foundationExercises.startDate
   const isSubmissionOpen = 
     now >= CHALLENGE_CONFIG.foundationExercises.startDate && 
     now <= CHALLENGE_CONFIG.foundationExercises.endDate
@@ -34,14 +35,23 @@ export default function FoundationExercises() {
 			</div>
 			<p className="text-white/80 text-sm mb-4">{exercise.description}</p>
 			<div className="flex gap-2">
-			  <a 
-			    href={exercise.readmePath || '#'}
-			    target="_blank"
-			    rel="noopener noreferrer"
-			    className="bg-oct-blue hover:bg-oct-blue/90 text-white px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg flex-1 flex items-center justify-center"
-			  >
-			    View Exercise
-			  </a>
+			  {isExercisePeriodActive ? (
+			    <a 
+			      href={exercise.readmePath || '#'}
+			      target="_blank"
+			      rel="noopener noreferrer"
+			      className="bg-oct-blue hover:bg-oct-blue/90 text-white px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg flex-1 flex items-center justify-center"
+			    >
+			      View Exercise
+			    </a>
+			  ) : (
+			    <button 
+			      disabled
+			      className="bg-oct-blue/30 text-white/50 px-4 py-2 rounded-xl text-sm font-semibold shadow-lg flex-1 flex items-center justify-center cursor-not-allowed"
+			    >
+			      View Exercise
+			    </button>
+			  )}
 			  {isSubmissionOpen ? (
 			    <a 
 			      href={exercise.submissionFormUrl || '#'}
