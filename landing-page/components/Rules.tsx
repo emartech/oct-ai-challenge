@@ -16,7 +16,7 @@ export default function Rules() {
               🎖️ Foundation Exercises
             </h3>
             <p className="text-white text-xl md:text-xl font-light mb-4">
-              These exercises are skill-building modules designed to ensure all participants have the core competencies needed for the main challenges. Think of them as "training levels" that unlock advanced gameplay.
+              These exercises are skill-building modules designed to ensure all participants have the core competencies needed for the main challenges. Think of them as &ldquo;training levels&rdquo; that unlock advanced gameplay.
             </p>
           </div>
 
