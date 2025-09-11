@@ -8,6 +8,9 @@ This collection of warmup exercises helps users learn how to effectively use our
 
 ## Available Exercises
 
+### 0️⃣ [Test](./test/)
+Verify your connection to the AI endpoint before starting the exercises.
+
 ### 1️⃣ [Basic](./basic/)
 Start with fundamental AI interactions and simple prompt engineering techniques.
 
@@ -34,10 +37,11 @@ Set up and configure Model Context Protocol servers for enhanced AI interactions
 
 ## Getting Started
 
-1. **Access the Endpoint**: Contact your IT administrator for API credentials
-2. **Choose an Exercise**: Start with the [Basic](./basic/) exercises if you're new to AI
-3. **Follow Examples**: Each folder contains working examples and explanations
-4. **Experiment**: Modify the examples to fit your specific use cases
+1. **Test Connection**: Run the [Test](./test/) exercise to verify endpoint connectivity
+2. **Access the Endpoint**: Contact your IT administrator for API credentials if needed
+3. **Choose an Exercise**: Start with the [Basic](./basic/) exercises if you're new to AI
+4. **Follow Examples**: Each folder contains working examples and explanations
+5. **Experiment**: Modify the examples to fit your specific use cases
 
 ## Prerequisites
 
