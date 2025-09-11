@@ -12,28 +12,28 @@ This collection of warmup exercises helps users learn how to effectively use our
 Verify your connection to the AI endpoint before starting the exercises.
 
 ### 1️⃣ [Basic](./basic/)
-Start with fundamental AI interactions and simple prompt engineering techniques.
+Simple prompt-response interactions with system and user prompts.
 
 ### 2️⃣ [JSON](./json/)
-Master structured data handling with JSON inputs and outputs from AI models.
+Force structured JSON output with schema validation using Pydantic, Zod, and JSON schemas.
 
 ### 3️⃣ [Agent](./agent/)
-Learn how to build and deploy AI agents that can perform complex tasks autonomously.
+Build AI agents with tools (Calculator & Search) using LangChain and Vercel AI SDK.
 
 ### 4️⃣ [LLM Evaluation](./llm-evaluation/)
-Understand how to evaluate and benchmark AI model performance.
+*(Coming soon)* Evaluate and benchmark AI model performance.
 
 ### 5️⃣ [Prompt Injection](./prompt-injection/)
-Understand security considerations and safe prompt handling techniques.
+*(Coming soon)* Security considerations and defense techniques.
 
 ### 6️⃣ [Integration with Codex](./integration-with-codex/)
-Explore how to integrate AI capabilities with code generation and understanding.
+*(Coming soon)* AI capabilities with code generation and understanding.
 
 ### 7️⃣ [MCP Usage](./mcp-usage/)
-Learn practical applications of the Model Context Protocol in real-world scenarios.
+*(Coming soon)* Practical applications of the Model Context Protocol.
 
 ### 8️⃣ [MCP Server](./mcp-server/)
-Set up and configure Model Context Protocol servers for enhanced AI interactions.
+*(Coming soon)* Set up and configure Model Context Protocol servers.
 
 ## Getting Started
 
