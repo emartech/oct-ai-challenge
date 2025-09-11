@@ -3,10 +3,13 @@ import { CHALLENGE_CONFIG } from '../config/challenges'
 export default function FoundationExercises() {
   // Check if foundation exercises period is active
   const now = new Date()
-  const isExercisePeriodActive = now >= CHALLENGE_CONFIG.foundationExercises.startDate
-  const isSubmissionOpen = 
+  const isDevelopment = process.env.NODE_ENV === 'development'
+  
+  const isExercisePeriodActive = isDevelopment || now >= CHALLENGE_CONFIG.foundationExercises.startDate
+  const isSubmissionOpen = isDevelopment || (
     now >= CHALLENGE_CONFIG.foundationExercises.startDate && 
     now <= CHALLENGE_CONFIG.foundationExercises.endDate
+  )
 
   return (
 	<div className="mb-20">
