@@ -64,7 +64,7 @@ export default function Hero() {
 
           {/* Traffic Lane 3 - Moving Right to Left Fast (Different timing) */}
           <div className="absolute top-3/4 left-0 w-full h-16 flex items-center">
-            <div className="animate-highway-left-fast" style={{animationDelay: '3s'}}>
+            <div className="animate-highway-right-slow">
               <Image
                 src="Anvil_RipplePattern_RGB_grey_2.png"
                 alt="Traffic Flow 3"
@@ -77,7 +77,7 @@ export default function Hero() {
 
           {/* Traffic Lane 4 - Moving Right to Left Medium (Different timing) */}
           <div className="absolute top-1/6 left-0 w-full h-16 flex items-center">
-            <div className="animate-highway-left-medium" style={{animationDelay: '4s'}}>
+            <div className="animate-highway-left-medium">
               <Image
                 src="Anvil_RipplePattern_RGB_grey_2.png"
                 alt="Traffic Flow 4"
