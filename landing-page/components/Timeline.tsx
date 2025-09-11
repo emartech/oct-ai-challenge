@@ -9,14 +9,21 @@ export default function Timeline() {
 		  <div className="relative flex flex-col md:flex-row items-center justify-between gap-4 text-center">
 			{CHALLENGE_CONFIG.timeline.milestones.map((milestone, index) => (
 			  <div key={milestone.date} className="flex flex-col items-center relative z-10">
-				<div className="w-4 h-4 bg-white rounded-full mb-2 shadow-lg"></div>
-				<span className="text-white font-medium">{milestone.date}</span>
+                <span className="text-white font-medium mb-2">{milestone.date}</span>
+				<div className={`w-4 h-4 rounded-full mb-2 shadow-lg ${
+				  milestone.type === 'foundation' 
+					? 'bg-white' 
+					: index <= 1
+					? 'bg-gradient-to-r from-gray-400 to-gray-600'
+					: 'bg-gray-500'
+				}`}></div>
+				
 				<span className="text-white/90 text-sm">{milestone.label}</span>
                 <span className="text-oct-blue/90 text-sm">{milestone.description}</span>
 			  </div>
 			))}
 			{/* Connecting line behind all dots */}
-			<div className="hidden md:block absolute top-2 left-[11.2%] right-[10%] h-0.5 bg-gradient-to-r from-white via-white to-white/40"></div>
+			{/* <div className="hidden md:block absolute top-2 left-[0%] right-[0%] h-0.5 bg-gradient-to-r from-white via-gray-300 to-gray-500"></div> */}
 		  </div>
 		</div>
 	  </div>

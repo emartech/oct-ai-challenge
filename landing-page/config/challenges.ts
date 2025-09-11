@@ -102,18 +102,33 @@ export const CHALLENGE_CONFIG = {
         milestones: [
             {
                 date: "Oct 13",
-                label: "Foundation Start",
-                description: "All foundation exercises available"
+                label: "Foundation exercises open",
+                description: "All foundation exercises available.",
+                type: "foundation"
             },
             {
                 date: "Oct 27",
-                label: "Main Challenge Start",
-                description: "First main challenge goes live"
+                label: "Main challenges begin",
+                description: "First main challenge opens",
+                type: "main"
+            },
+            {
+                date: "Nov 3",
+                label: "New main challenge opens",
+                description: "Second main challenge opens",
+                type: "main"
+            },
+            {
+                date: "Nov 10",
+                label: "New main challenge opens",
+                description: "Third main challenge opens",
+                type: "main"
             },
             {
                 date: "Nov 21",
-                label: "Final Challenge",
-                description: "Last main challenge released"
+                label: "Main challenges end",
+                description: "Final challenge released",
+                type: "main"
             }
         ]
     }

@@ -9,14 +9,17 @@ export default function FoundationExercises() {
 
   return (
 	<div className="mb-20">
-	  <div className="flex items-center justify-center mb-8">
-		<div className="bg-oct-blue/20 backdrop-blur-sm rounded-2xl px-6 py-3">
-		  <h3 className="text-white text-2xl font-semibold flex items-center gap-3">
+	  <div className="text-center mb-8">
+		<div className="bg-oct-blue/20 backdrop-blur-sm rounded-2xl px-6 py-6 max-w-4xl mx-auto">
+		  <h3 className="text-white text-2xl font-semibold flex items-center justify-center gap-3 mb-3">
 			{CHALLENGE_CONFIG.foundationExercises.title}
 			<span className="bg-oct-blue px-3 py-1 rounded-full text-sm">
 			  Starting {CHALLENGE_CONFIG.foundationExercises.launchDate}
 			</span>
 		  </h3>
+		  <p className="text-white/80 text-base">
+			Complete exercises to earn exclusive badges that can be exchanged for additional benefits at the end.
+		  </p>
 		</div>
 	  </div>
 	  
