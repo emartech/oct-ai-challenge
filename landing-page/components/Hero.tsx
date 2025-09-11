@@ -11,7 +11,7 @@ export default function Hero() {
           <div className="relative z-10 flex-shrink-0">
             <div className="relative">
               <Image
-                src="/octaianvil.png"
+                src="octaianvil.png"
                 alt="OCT AI Robot"
                 width={400}
                 height={400}
@@ -40,7 +40,7 @@ export default function Hero() {
           <div className="absolute top-1/4 left-0 w-full h-16 flex items-center">
             <div className="animate-highway-left-fast">
               <Image
-                src="/Anvil_RipplePattern_RGB_grey_2.png"
+                src="Anvil_RipplePattern_RGB_grey_2.png"
                 alt="Traffic Flow 1"
                 width={600}
                 height={400}
@@ -53,7 +53,7 @@ export default function Hero() {
           <div className="absolute top-2/4 left-0 w-full h-16 flex items-center">
             <div className="animate-highway-left-medium">
               <Image
-                src="/Anvil_RipplePattern_RGB_grey_2.png"
+                src="Anvil_RipplePattern_RGB_grey_2.png"
                 alt="Traffic Flow 2"
                 width={600}
                 height={400}
@@ -66,7 +66,7 @@ export default function Hero() {
           <div className="absolute top-3/4 left-0 w-full h-16 flex items-center">
             <div className="animate-highway-left-fast" style={{animationDelay: '3s'}}>
               <Image
-                src="/Anvil_RipplePattern_RGB_grey_2.png"
+                src="Anvil_RipplePattern_RGB_grey_2.png"
                 alt="Traffic Flow 3"
                 width={600}
                 height={400}
@@ -79,7 +79,7 @@ export default function Hero() {
           <div className="absolute top-1/6 left-0 w-full h-16 flex items-center">
             <div className="animate-highway-left-medium" style={{animationDelay: '4s'}}>
               <Image
-                src="/Anvil_RipplePattern_RGB_grey_2.png"
+                src="Anvil_RipplePattern_RGB_grey_2.png"
                 alt="Traffic Flow 4"
                 width={600}
                 height={400}
