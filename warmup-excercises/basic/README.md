@@ -1,0 +1,116 @@
+# Basic AI Interactions
+
+> Start with fundamental AI interactions and simple prompt engineering
+
+## Overview
+
+Learn how to make basic requests to AI models using system and user prompts. This exercise demonstrates the simplest form of AI interaction - sending a prompt and receiving a response.
+
+## Examples
+
+<details>
+<summary>cURL</summary>
+
+```bash
+curl https://ai.company.internal/v1/chat/completions \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "gpt-4",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a geography expert. Your task is to provide the capital city of any country asked. Respond only with the city name."
+      },
+      {
+        "role": "user",
+        "content": "France"
+      }
+    ]
+  }' | jq -r '.choices[0].message.content'
+```
+
+</details>
+
+<details>
+<summary>LangChain Python</summary>
+
+```python
+from langchain.llms import Custom
+from langchain.schema import SystemMessage, HumanMessage
+
+llm = Custom(endpoint="https://ai.company.internal/v1/chat")
+
+messages = [
+    SystemMessage(content="You are a geography expert. Your task is to provide the capital city of any country asked. Respond only with the city name."),
+    HumanMessage(content="France")
+]
+
+result = llm.invoke(messages)
+print(result)
+```
+
+</details>
+
+<details>
+<summary>LangChain JavaScript</summary>
+
+```javascript
+import { ChatOpenAI } from "langchain/chat_models/openai";
+import { SystemMessage, HumanMessage } from "langchain/schema";
+
+const model = new ChatOpenAI({
+  modelName: "gpt-4",
+  configuration: { basePath: "https://ai.company.internal/v1" }
+});
+
+const messages = [
+  new SystemMessage("You are a geography expert. Your task is to provide the capital city of any country asked. Respond only with the city name."),
+  new HumanMessage("France")
+];
+
+const result = await model.invoke(messages);
+console.log(result.content);
+```
+
+</details>
+
+<details>
+<summary>Vercel AI SDK (JavaScript)</summary>
+
+```javascript
+import { createOpenAI } from '@ai-sdk/openai';
+import { generateText } from 'ai';
+
+const result = await generateText({
+  model: createOpenAI({ baseURL: 'https://ai.company.internal/v1' })('gpt-4'),
+  system: 'You are a geography expert. Your task is to provide the capital city of any country asked. Respond only with the city name.',
+  prompt: 'France'
+});
+console.log(result.text);
+```
+
+</details>
+
+## How It Works
+
+1. **System Prompt**: Defines the AI's role and behavior
+2. **User Prompt**: The actual question or request
+3. **Response**: The AI's answer based on the prompts
+
+## Try It Yourself
+
+1. Choose your preferred framework
+2. Install required dependencies
+3. Replace the endpoint with your actual endpoint
+4. Try different countries to test the responses
+
+## Resources
+
+- [LangChain Python Docs](https://python.langchain.com/)
+- [LangChain JS Docs](https://js.langchain.com/)
+- [Vercel AI SDK Documentation](https://sdk.vercel.ai/docs)
+- [Prompt Engineering Guide](https://www.promptingguide.ai/)
+
+---
+
+*Questions? Reach out on Slack #guild-ai*
