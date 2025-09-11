@@ -33,7 +33,7 @@ Build AI agents with tools (Calculator & Search) using LangChain and Vercel AI S
 Learn how to use the Model Context Protocol to connect AI models with external tools and data sources using the Vercel AI SDK.
 
 ### 8️⃣ [MCP Server](./mcp-server/)
-*(Coming soon)* Set up and configure Model Context Protocol servers.
+Learn how to create your own Model Context Protocol servers to expose custom tools and resources to AI models.
 
 ## Getting Started
 
