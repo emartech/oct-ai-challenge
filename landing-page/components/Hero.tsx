@@ -1,9 +1,12 @@
 import Image from 'next/image'
+import FoundationExercises from './FoundationExercises'
+import MainChallenges from './MainChallenges'
+import Timeline from './Timeline'
 
 export default function Hero() {
   return (
     <div className="min-h-screen bg-oct-bg flex items-center justify-center px-4 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto text-center relative z-10">
+      <div className="max-w-7xl mx-auto text-center relative z-10 pt-8">
 
         {/* Images Container */}
         <div className="relative flex items-center flex-wrap lg:flex-nowrap">
@@ -91,7 +94,7 @@ export default function Hero() {
 
         {/* Call to Action Section */}
         <div className="mt-16 md:mt-24">
-          <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 md:p-12 max-w-4xl mx-auto">
+          <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 md:p-12 max-w-6xl mx-auto">
             <h2 className="text-white text-2xl md:text-3xl font-semibold mb-4">
               A challenge, designed to help YOU leverage AI tools for your own benefit by offering engaging tasks.
             </h2>
@@ -108,6 +111,23 @@ export default function Hero() {
             </div>
           </div>
         </div>
+
+        {/* Timeline Section */}
+        <Timeline />
+
+        <div className="mt-24 md:mt-24">
+          <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 md:p-12 max-w-6xl mx-auto">
+            <h2 className="text-white text-4xl md:text-5xl font-bold text-center mb-4">
+              <span className="text-oct-blue">Challenge</span> Roadmap
+            </h2>
+            <p className="text-white/90 text-xl text-center mb-16">
+              Your journey to AI mastery starts here
+            </p>
+            <FoundationExercises />
+            <MainChallenges />
+          </div>
+        </div>
+
       </div>
     </div>
   )
