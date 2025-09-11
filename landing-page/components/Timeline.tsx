@@ -16,7 +16,7 @@ export default function Timeline() {
 			  </div>
 			))}
 			{/* Connecting line behind all dots */}
-			<div className="hidden md:block absolute top-2 left-[16.67%] right-[16.67%] h-0.5 bg-gradient-to-r from-white via-white to-white/40"></div>
+			<div className="hidden md:block absolute top-2 left-[11.2%] right-[10%] h-0.5 bg-gradient-to-r from-white via-white to-white/40"></div>
 		  </div>
 		</div>
 	  </div>
