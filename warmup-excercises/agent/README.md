@@ -16,37 +16,26 @@ from langchain.agents import initialize_agent, Tool
 from langchain.llms import Custom
 from langchain_community.tools import DuckDuckGoSearchRun
 
-# Your enterprise AI endpoint - no authentication required
-llm = Custom(endpoint="https://ai.company.internal/v1/chat")
-
-# Initialize search tool (no API key needed)
-search = DuckDuckGoSearchRun()
-
-# Define tools the agent can use
-tools = [
-    Tool(
-        name="Calculator",
-        func=lambda x: eval(x),
-        description="Useful for mathematical calculations"
-    ),
-    Tool(
-        name="Search",
-        func=search.run,
-        description="Search for information on the internet"
-    )
-]
-
-# Initialize agent
 agent = initialize_agent(
-    tools, 
-    llm, 
+    [
+        Tool(
+            name="Calculator",
+            func=lambda x: eval(x),
+            description="Useful for mathematical calculations"
+        ),
+        Tool(
+            name="Search",
+            func=DuckDuckGoSearchRun().run,
+            description="Search for information on the internet"
+        )
+    ],
+    Custom(endpoint="https://ai.company.internal/v1/chat"),
     agent="zero-shot-react-description",
     verbose=True
 )
 
-# Run the agent
-response = agent.run("Calculate ((15 * 23) + (47 * 3)) / 6, then search for the meaning and significance of that number")
-print(f"Result: {response}")
+result = agent.run("Calculate ((15 * 23) + (47 * 3)) / 6, then search for the meaning and significance of that number")
+print(result)
 ```
 
 </details>
@@ -60,34 +49,19 @@ import { ChatOpenAI } from "langchain/chat_models/openai";
 import { Calculator } from "langchain/tools/calculator";
 import { DuckDuckGoSearch } from "@langchain/community/tools/duckduckgo_search";
 
-// Your enterprise AI endpoint - no authentication required
-const model = new ChatOpenAI({
-  modelName: "gpt-4",
-  configuration: {
-    basePath: "https://ai.company.internal/v1"
-  }
-});
-
-// Initialize search tool (no API key needed)
-const search = new DuckDuckGoSearch();
-
-// Define tools
-const tools = [
-  new Calculator(),
-  search
-];
-
-// Initialize and run agent
-const executor = await initializeAgentExecutorWithOptions(tools, model, {
-  agentType: "zero-shot-react-description",
-  verbose: true,
-});
+const executor = await initializeAgentExecutorWithOptions(
+  [new Calculator(), new DuckDuckGoSearch()],
+  new ChatOpenAI({
+    modelName: "gpt-4",
+    configuration: { basePath: "https://ai.company.internal/v1" }
+  }),
+  { agentType: "zero-shot-react-description", verbose: true }
+);
 
 const result = await executor.call({
   input: "Calculate ((15 * 23) + (47 * 3)) / 6, then search for the meaning and significance of that number"
 });
-
-console.log(`Result: ${result.output}`);
+console.log(result.output);
 ```
 
 </details>
@@ -101,50 +75,27 @@ import { generateText, tool } from 'ai';
 import { z } from 'zod';
 import { search } from 'duck-duck-scrape';
 
-// Configure your enterprise AI endpoint - no authentication required
-const model = createOpenAI({
-  baseURL: 'https://ai.company.internal/v1',
-})('gpt-4');
-
-// Define tools
-const tools = {
-  calculate: tool({
-    description: 'Useful for mathematical calculations',
-    parameters: z.object({
-      expression: z.string().describe('Mathematical expression to evaluate'),
+const result = await generateText({
+  model: createOpenAI({ baseURL: 'https://ai.company.internal/v1' })('gpt-4'),
+  tools: {
+    calculate: tool({
+      description: 'Useful for mathematical calculations',
+      parameters: z.object({ expression: z.string() }),
+      execute: async ({ expression }) => eval(expression)
     }),
-    execute: async ({ expression }) => eval(expression), // Use safe parser in production
-  }),
-  search: tool({
-    description: 'Search for information on the internet',
-    parameters: z.object({
-      query: z.string().describe('Search query'),
-    }),
-    execute: async ({ query }) => {
-      // Use DuckDuckGo search (no API key needed)
-      const searchResults = await search(query, {
-        safeSearch: 'moderate',
-        locale: 'en-us'
-      });
-      
-      // Return top 3 results
-      return searchResults.results
-        .slice(0, 3)
-        .map(r => `${r.title}: ${r.description}`)
-        .join('\n');
-    },
-  }),
-};
-
-// Run the agent
-const { text } = await generateText({
-  model,
-  tools,
+    search: tool({
+      description: 'Search for information on the internet',
+      parameters: z.object({ query: z.string() }),
+      execute: async ({ query }) => {
+        const results = await search(query, { safeSearch: 'moderate' });
+        return results.results.slice(0, 3).map(r => `${r.title}: ${r.description}`).join('\n');
+      }
+    })
+  },
   toolChoice: 'auto',
-  prompt: 'Calculate ((15 * 23) + (47 * 3)) / 6, then search for the meaning and significance of that number',
+  prompt: 'Calculate ((15 * 23) + (47 * 3)) / 6, then search for the meaning and significance of that number'
 });
-
-console.log(`Result: ${text}`);
+console.log(result.text);
 ```
 
 </details>
