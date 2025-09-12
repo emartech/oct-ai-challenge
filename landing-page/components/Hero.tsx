@@ -3,6 +3,7 @@ import MainChallenges from './MainChallenges'
 import Timeline from './Timeline'
 import HeroBackground from './HeroBackground'
 import CallToAction from './CallToAction'
+import ParticipantCounter from './ParticipantCounter'
 import Rules from './Rules'
 
 export default function Hero() {
@@ -18,7 +19,7 @@ export default function Hero() {
 
         <Timeline />
 
-        <div className="mt-24 md:mt-24">
+        <div className="mt-16">
           <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 md:p-12 max-w-6xl mx-auto">
             <h2 className="text-white text-4xl md:text-5xl font-bold text-center mb-4">
               <span className="text-oct-blue">Challenge</span> Roadmap

@@ -1,10 +1,15 @@
+import ParticipantCounter from "./ParticipantCounter";
+
 export default function CallToAction() {
   return (
-    <div className="mt-16 md:mt-24">
+    <div className="mt-16">
       <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 md:p-12 max-w-6xl mx-auto">
         <h2 className="text-white text-2xl md:text-3xl font-semibold mb-4">
           A challenge built as a progressive learning platform that guides participants from basic AI skills to advanced real-world applications.
         </h2>
+
+        <ParticipantCounter />
+
         <p className="text-white text-xl md:text-2xl font-light mb-4">
           Are you interested?
         </p>

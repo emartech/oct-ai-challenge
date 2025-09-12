@@ -1,6 +1,6 @@
 export default function Rules() {
   return (
-    <div className="mt-16 md:mt-24">
+    <div className="mt-16">
       <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 md:p-12 max-w-6xl mx-auto">
         <h2 className="text-white text-3xl md:text-4xl font-bold text-center mb-8">
           <span className="text-oct-blue">Challenge</span> Structure
