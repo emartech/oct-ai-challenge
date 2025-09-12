@@ -29,16 +29,8 @@ export default function ParticipantCounterAppScript() {
   if (isLoading) {
     return (
       <div className="mb-4">
-        <div className="bg-white rounded-2xl pt-6 pb-4 max-w-6xl mx-auto text-center">
-          <p className="text-oct-blue text-xl md:text-2xl font-semibold mb-2">
-            Join the growing community of AI enthusiasts!
-          </p>
-          <p className="text-gray-600 text-base mb-4">
-            The number of participants who already <strong>secured their seat</strong>:
-          </p>
-          <div className="text-4xl font-bold text-oct-blue animate-pulse">
-            ...
-          </div>
+        <div className="text-4xl font-bold text-oct-blue animate-pulse">
+          ...
         </div>
       </div>
     );
