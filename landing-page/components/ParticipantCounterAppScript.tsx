@@ -44,6 +44,10 @@ export default function ParticipantCounterAppScript() {
     );
   }
 
+  if (count === 0) {
+    return null;
+  }
+
   return (
     <div className="mb-4">
       <div className="bg-white rounded-2xl pt-6 pb-4 max-w-6xl mx-auto text-center">
