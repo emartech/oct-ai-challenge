@@ -4,8 +4,12 @@ Learn how to make basic requests to AI models using system and user prompts. Thi
 
 ## Examples
 
+📁 [capital-finder/](./capital-finder/)
+
 <details>
 <summary>OpenAI SDK Python</summary>
+
+📄 [capital-finder.py](./capital-finder/capital-finder.py)
 
 ```python
 from openai import OpenAI
@@ -38,6 +42,8 @@ print(result)
 <details>
 <summary>OpenAI SDK JavaScript</summary>
 
+📄 [capital-finder.js](./capital-finder/capital-finder.js)
+
 ```javascript
 import OpenAI from 'openai';
 
@@ -68,6 +74,8 @@ console.log(result);
 
 <details>
 <summary>cURL</summary>
+
+📄 [capital-finder.sh](./capital-finder/capital-finder.sh)
 
 ```bash
 curl https://ai.company.internal/v1/chat/completions \

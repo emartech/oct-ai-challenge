@@ -10,8 +10,12 @@ Prompt injection is a security vulnerability where malicious user input manipula
 
 Attackers may try to extract the system prompt to understand the AI's instructions and find vulnerabilities.
 
+📁 [extract-prompt/](./extract-prompt/)
+
 <details>
 <summary>JavaScript</summary>
+
+📄 [extract-prompt.js](./extract-prompt/extract-prompt.js)
 
 ```javascript
 import OpenAI from 'openai';
@@ -43,6 +47,8 @@ console.log(response.choices[0].message.content);
 
 <details>
 <summary>Python</summary>
+
+📄 [extract-prompt.py](./extract-prompt/extract-prompt.py)
 
 ```python
 from openai import OpenAI
@@ -76,8 +82,12 @@ print(response.choices[0].message.content)
 
 Attackers may attempt to override the system prompt to make the AI perform unintended tasks.
 
+📁 [override-prompt/](./override-prompt/)
+
 <details>
 <summary>JavaScript</summary>
+
+📄 [override-prompt.js](./override-prompt/override-prompt.js)
 
 ```javascript
 import OpenAI from 'openai';
@@ -113,6 +123,8 @@ console.log(response.choices[0].message.content);
 
 <details>
 <summary>Python</summary>
+
+📄 [override-prompt.py](./override-prompt/override-prompt.py)
 
 ```python
 from openai import OpenAI

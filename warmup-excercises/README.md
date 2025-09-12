@@ -13,9 +13,11 @@ Verify your connection to the AI endpoint before starting the exercises.
 
 ### 1️⃣ [Basic](./basic/)
 Simple prompt-response interactions with system and user prompts.
+- 📁 [capital-finder/](./basic/capital-finder/) - Geography expert example
 
 ### 2️⃣ [JSON](./json/)
 Force structured JSON output with schema validation using Pydantic, Zod, and JSON schemas.
+- 📁 [country-info/](./json/country-info/) - Structured country data example
 
 ### 3️⃣ [Agent](./agent/)
 Build AI agents with tools (Calculator & Search) using LangChain and Vercel AI SDK.
@@ -25,12 +27,14 @@ Build AI agents with tools (Calculator & Search) using LangChain and Vercel AI S
 
 ### 5️⃣ [Prompt Injection](./prompt-injection/)
 Learn about prompt injection vulnerabilities and how to defend against them in AI applications.
+- 📁 [extract-prompt/](./prompt-injection/extract-prompt/) - System prompt extraction attack
+- 📁 [override-prompt/](./prompt-injection/override-prompt/) - System prompt override attack
 
 ### 6️⃣ [Integration with Codex](./integration-with-codex/)
 *(Coming soon)* AI capabilities with code generation and understanding.
 
 ### 7️⃣ [MCP Usage](./mcp-usage/)
-Learn how to use the Model Context Protocol to connect AI models with external tools and data sources using the Vercel AI SDK.
+Learn how to use the Model Context Protocol to connect AI models with external tools and data sources.
 
 ### 8️⃣ [MCP Server](./mcp-server/)
 Learn how to create your own Model Context Protocol servers to expose custom tools and resources to AI models.

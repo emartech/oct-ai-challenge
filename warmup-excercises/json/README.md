@@ -4,8 +4,12 @@ Master structured data handling by forcing AI models to return JSON in a specifi
 
 ## Examples
 
+📁 [country-info/](./country-info/)
+
 <details>
 <summary>OpenAI SDK Python</summary>
+
+📄 [country-info.py](./country-info/country-info.py)
 
 ```python
 from openai import OpenAI
@@ -41,6 +45,8 @@ print(f"Continent: {result.continent}")
 
 <details>
 <summary>OpenAI SDK JavaScript</summary>
+
+📄 [country-info.js](./country-info/country-info.js)
 
 ```javascript
 import OpenAI from 'openai';
