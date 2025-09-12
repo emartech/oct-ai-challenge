@@ -1,4 +1,5 @@
 import ParticipantCounter from "./ParticipantCounter";
+import ParticipantCounterAppScript from "./ParticipantCounterAppScript";
 
 export default function CallToAction() {
   return (
@@ -8,7 +9,8 @@ export default function CallToAction() {
           A challenge built as a progressive learning platform that guides participants from basic AI skills to advanced real-world applications.
         </h2>
 
-        <ParticipantCounter />
+        {/* <ParticipantCounter />*/}
+        <ParticipantCounterAppScript />
 
         <p className="text-white text-xl md:text-2xl font-light mb-4">
           Are you interested?
