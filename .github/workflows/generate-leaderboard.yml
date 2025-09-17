@@ -9,7 +9,6 @@ on:
 permissions:
   contents: read
   actions: read
-  id-token: write
 
 jobs:
   generate-leaderboard:
@@ -26,22 +25,23 @@ jobs:
             cp ./participants.csv ./data/participants.csv
           fi
 
-      - name: Install LLM with GitHub Models
+      - name: Install Anthropic Claude LLM
         run: |
-          python -m pip install llm-github-models
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          python -m pip install llm llm-claude-3
 
       - name: Generate leaderboard with LLM
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: |
+          # Test Claude LLM communication first
+          echo "Testing Claude LLM connection..."
+          echo "Hello LLM" | llm prompt -m claude-3-haiku -s "Just respond with 'LLM connection successful'"
+
           # Check if CSV file exists
           if [ -f "./data/participants.csv" ]; then
             echo "Processing participant data..."
 
-            # Set up LLM authentication and generate leaderboard
-            echo "${{ secrets.GITHUB_TOKEN }}" | llm keys set github
-
-            cat ./data/participants.csv | llm prompt -m github/gpt-4o-mini -s "
+            cat ./data/participants.csv | llm prompt -m claude-3-haiku -s "
             You are tasked with creating a leaderboard from participant data in CSV format.
 
             Please analyze the CSV data and generate:
