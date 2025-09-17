@@ -1,0 +1,67 @@
+name: Generate leaderboard
+
+on:
+  workflow_run:
+    workflows: ["*"]
+    types: [completed]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  models: read
+
+jobs:
+  generate-leaderboard:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download CSV artifact or use temp CSV
+        run: |
+          # Try to download artifact, if it fails use temp CSV
+          if ! gh run download --name participant-data --dir ./data 2>/dev/null; then
+            echo "No artifact found, using temp CSV file"
+            mkdir -p ./data
+            cp ./participants.csv ./data/participants.csv
+          fi
+
+      - name: Install LLM with GitHub Models
+        run: |
+          python -m pip install llm-github-models
+          echo "${{ secrets.GITHUB_TOKEN }}" | llm keys set github
+
+      - name: Generate leaderboard with LLM
+        run: |
+          # Check if CSV file exists
+          if [ -f "./data/participants.csv" ]; then
+            echo "Processing participant data..."
+
+            # Use LLM to generate leaderboard from CSV
+            cat ./data/participants.csv | llm prompt -m github/gpt-4o-mini -s "
+            You are tasked with creating a leaderboard from participant data in CSV format.
+
+            Please analyze the CSV data and generate:
+            1. A ranked leaderboard showing participant rankings
+            2. Summary statistics (total participants, completion rates, etc.)
+            3. Progress breakdown by challenge phase
+            4. Notable achievements or milestones reached
+
+            Format the output as clean, readable markdown that could be used in a README or website.
+            Include appropriate emojis and formatting to make it engaging.
+
+            CSV Data:
+            " > leaderboard.md
+
+            echo "Leaderboard generated successfully!"
+            cat leaderboard.md
+          else
+            echo "No CSV file found. Skipping leaderboard generation."
+            echo "Expected file: ./data/participants.csv"
+          fi
+
+      - name: Upload leaderboard
+        uses: actions/upload-artifact@v4
+        with:
+          name: leaderboard
+          path: leaderboard.md
+          retention-days: 30
