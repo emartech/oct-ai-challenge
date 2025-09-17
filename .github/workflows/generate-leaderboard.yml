@@ -8,7 +8,8 @@ on:
 
 permissions:
   contents: read
-  models: read
+  actions: read
+  id-token: write
 
 jobs:
   generate-leaderboard:
@@ -28,7 +29,8 @@ jobs:
       - name: Install LLM with GitHub Models
         run: |
           python -m pip install llm-github-models
-          echo "${{ secrets.GITHUB_TOKEN }}" | llm keys set github
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Generate leaderboard with LLM
         run: |
@@ -36,7 +38,10 @@ jobs:
           if [ -f "./data/participants.csv" ]; then
             echo "Processing participant data..."
 
-            # Use LLM to generate leaderboard from CSV
+            # Set up LLM authentication and generate leaderboard
+            export GITHUB_TOKEN="${{ secrets.GITHUB_TOKEN }}"
+            llm keys set github "$GITHUB_TOKEN"
+
             cat ./data/participants.csv | llm prompt -m github/gpt-4o-mini -s "
             You are tasked with creating a leaderboard from participant data in CSV format.
 
