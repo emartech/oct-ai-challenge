@@ -39,8 +39,7 @@ jobs:
             echo "Processing participant data..."
 
             # Set up LLM authentication and generate leaderboard
-            export GITHUB_TOKEN="${{ secrets.GITHUB_TOKEN }}"
-            llm keys set github "$GITHUB_TOKEN"
+            echo "${{ secrets.GITHUB_TOKEN }}" | llm keys set github
 
             cat ./data/participants.csv | llm prompt -m github/gpt-4o-mini -s "
             You are tasked with creating a leaderboard from participant data in CSV format.
