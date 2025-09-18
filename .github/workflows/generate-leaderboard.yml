@@ -1,4 +1,5 @@
 name: Generate leaderboard
+run-name: generate-leaderboard
 
 on:
   workflow_run:

@@ -1,7 +1,8 @@
-name: get-leaderboard-data
-run-name:  Get leaderboard data
+name: Get leaderboard data
+run-name: get-leaderboard-data
 
 on:
+  workflow_dispatch: # allow manual trigger
   schedule:
     - cron: '0 9 * * *'
 

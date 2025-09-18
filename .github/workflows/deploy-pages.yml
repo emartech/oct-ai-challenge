@@ -1,4 +1,5 @@
 name: Deploy Landing Page to GitHub Pages
+run-name: deploy-pages
 
 on:
   push:
