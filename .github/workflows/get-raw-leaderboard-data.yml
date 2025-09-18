@@ -1,5 +1,5 @@
-name: Get leaderboard data
-run-name: get-leaderboard-data
+name: Get raw leaderboard data
+run-name: get-raw-leaderboard-data
 
 on:
   workflow_dispatch: # allow manual trigger

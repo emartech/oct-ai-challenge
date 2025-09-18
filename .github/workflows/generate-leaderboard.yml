@@ -18,12 +18,21 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Download JSON artifact or use dummy JSON
+        uses: actions/download-artifact@v4
+        with:
+          name: leaderboard_raw
+          path: ./data
+        continue-on-error: true
+
+      - name: Check if artifact was downloaded, use dummy if not
         run: |
-          # Try to download artifact, if it fails use dummy JSON
-          if ! gh run download --name leaderboard_raw --dir ./data 2>/dev/null; then
+          if [ ! -f "./data/leaderboard_raw.jsonnet" ]; then
             echo "No artifact found, using dummy JSON file"
             mkdir -p ./data
             cp ./leaderboard_raw_dummy.jsonnet ./data/leaderboard_raw.jsonnet
+          else
+            echo "Artifact downloaded successfully"
+            ls -la ./data/
           fi
 
       - name: Install Anthropic Claude LLM
