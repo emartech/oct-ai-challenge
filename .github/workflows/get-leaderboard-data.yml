@@ -7,7 +7,7 @@ on:
     - cron: '0 9 * * *'
 
 jobs:
-  import-incident-io-catalog:
+  get-raw-leaderboard-data:
     runs-on: ubuntu-latest
     steps:
       - id: 'auth'
