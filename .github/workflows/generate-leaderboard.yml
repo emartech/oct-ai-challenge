@@ -17,7 +17,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Download JSON artifact or use dummy JSON
+      - name: Download leaderboard-raw-data JSON artifact
         uses: dawidd6/action-download-artifact@v2
         with:
           workflow: get-raw-leaderboard-data.yml
@@ -25,16 +25,13 @@ jobs:
           path: ./data
         continue-on-error: true
 
-      - name: Check if artifact was downloaded, use dummy if not
-        run: |
-          if [ ! -f "./data/leaderboard_raw.jsonnet" ]; then
-            echo "No artifact found, using dummy JSON file"
-            mkdir -p ./data
-            cp ./leaderboard_raw_dummy.jsonnet ./data/leaderboard_raw.jsonnet
-          else
-            echo "Artifact downloaded successfully"
-            ls -la ./data/
-          fi
+      - name: Download leaderboard-user-prompts JSON artifact
+        uses: dawidd6/action-download-artifact@v2
+        with:
+          workflow: get-raw-leaderboard-data.yml
+          name: leaderboard_user_prompts
+          path: ./data
+        continue-on-error: true
 
       - name: Install Anthropic Claude LLM
         run: |
@@ -50,10 +47,11 @@ jobs:
 
           # Check if JSON file exists
           if [ -f "./data/leaderboard_raw.jsonnet" ]; then
-            echo "Processing leaderboard data..."
+            echo "Processing leaderboard data and user promtps..."
 
-            cat ./data/leaderboard_raw.jsonnet | llm prompt -m claude-3-haiku -s "
-            You are tasked with creating a leaderboard from participant data in JSON format.
+            cat ./data/leaderboard_raw.jsonnet && cat ./data/leaderboard_user_prompts.jsonnet | llm prompt -m claude-3-haiku -s "
+            You are tasked with creating a leaderboard from leaderboard_raw data in JSON format.
+            Additionally, you have leaderboard_user_prompts data that can influence the final order or presentation of the leaderboard.
 
             Please analyze the JSON data and generate:
             1. A ranked leaderboard showing participant rankings

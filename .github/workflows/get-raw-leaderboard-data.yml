@@ -40,3 +40,21 @@ jobs:
           name: leaderboard_raw
           path: leaderboard_raw.jsonnet
           retention-days: 1
+
+      - name: Create leaderboard_user_prompts.jsonnet using BigQuery
+        run: |
+          echo "Running BigQuery command..."
+          if bq query --format=json --max_rows=5000 --use_legacy_sql=false --headless --project_id=sap-opc <"$(pwd)"/bq_leaderboard_user_prompts.sql > "$(pwd)"/leaderboard_user_prompts.jsonnet 2>&1; then
+            echo "BigQuery command succeeded"
+          else
+            echo "BigQuery command failed with error:"
+            bq query --format=json --max_rows=5000 --use_legacy_sql=false --headless --project_id=sap-opc <"$(pwd)"/bq_leaderboard_user_prompts.sql 2>&1 || true
+            exit 1
+          fi
+
+      - name: Upload leaderboard_user_prompts.jsonnet data as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: leaderboard_user_prompts
+          path: leaderboard_user_prompts.jsonnet
+          retention-days: 1
