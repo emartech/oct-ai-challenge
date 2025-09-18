@@ -23,31 +23,20 @@ jobs:
       - name: Install bq client
         run: gcloud components install bq --quiet
 
-      - name: Create leaderboard_raw JSON file
+      - name: Create leaderboard_raw.jsonnet using BigQuery
         run: |
-          echo "Checking if SQL file exists..."
-          ls -la bq_leaderboard.sql
-
-          echo "SQL file contents:"
-          cat bq_leaderboard.sql
-
           echo "Running BigQuery command..."
-          if bq query --format=json --max_rows=5000 --use_legacy_sql=false --headless --project_id=sap-opc <"$(pwd)"/bq_leaderboard.sql > "$(pwd)"/leaderboard_raw.jsonnet 2>&1; then
+          if bq query --format=json --max_rows=5000 --use_legacy_sql=false --headless --project_id=sap-opc <"$(pwd)"/bq_leaderboard_raw.sql > "$(pwd)"/leaderboard_raw.jsonnet 2>&1; then
             echo "BigQuery command succeeded"
-            echo "Generated file:"
-            ls -la leaderboard_raw.jsonnet
-            cat leaderboard_raw.jsonnet
           else
             echo "BigQuery command failed with error:"
-            bq query --format=json --max_rows=5000 --use_legacy_sql=false --headless --project_id=sap-opc <"$(pwd)"/bq_leaderboard.sql 2>&1 || true
-            echo "Checking if file was created anyway:"
-            ls -la leaderboard_raw.jsonnet || echo "No file created"
+            bq query --format=json --max_rows=5000 --use_legacy_sql=false --headless --project_id=sap-opc <"$(pwd)"/bq_leaderboard_raw.sql 2>&1 || true
             exit 1
           fi
 
-      - name: Upload leaderboard data as artifact
+      - name: Upload leaderboard_raw.jsonnet data as artifact
         uses: actions/upload-artifact@v4
         with:
           name: leaderboard_raw
           path: leaderboard_raw.jsonnet
-          retention-days: 7
+          retention-days: 1

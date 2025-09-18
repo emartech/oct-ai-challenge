@@ -1,0 +1,1 @@
+SELECT email_address as user, prompt FROM `sap-opc.oct_ai.leaderboard_user_prompts` ORDER BY created DESC;
