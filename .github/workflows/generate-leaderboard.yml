@@ -18,8 +18,9 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Download JSON artifact or use dummy JSON
-        uses: actions/download-artifact@v4
+        uses: dawidd6/action-download-artifact@v2
         with:
+          workflow: get-raw-leaderboard-data.yml
           name: leaderboard_raw
           path: ./data
         continue-on-error: true
