@@ -44,3 +44,10 @@ jobs:
             ls -la leaderboard_raw.jsonnet || echo "No file created"
             exit 1
           fi
+
+      - name: Upload leaderboard data as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: leaderboard_raw
+          path: leaderboard_raw.jsonnet
+          retention-days: 7
