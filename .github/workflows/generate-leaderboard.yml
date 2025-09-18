@@ -16,13 +16,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Download CSV artifact or use temp CSV
+      - name: Download JSON artifact or use dummy JSON
         run: |
-          # Try to download artifact, if it fails use temp CSV
-          if ! gh run download --name participant-data --dir ./data 2>/dev/null; then
-            echo "No artifact found, using temp CSV file"
+          # Try to download artifact, if it fails use dummy JSON
+          if ! gh run download --name leaderboard_raw --dir ./data 2>/dev/null; then
+            echo "No artifact found, using dummy JSON file"
             mkdir -p ./data
-            cp ./participants.csv ./data/participants.csv
+            cp ./leaderboard_raw_dummy.jsonnet ./data/leaderboard_raw.jsonnet
           fi
 
       - name: Install Anthropic Claude LLM
@@ -37,14 +37,14 @@ jobs:
           echo "Testing Claude LLM connection..."
           echo "Hello LLM" | llm prompt -m claude-3-haiku -s "Just respond with 'LLM connection successful'"
 
-          # Check if CSV file exists
-          if [ -f "./data/participants.csv" ]; then
-            echo "Processing participant data..."
+          # Check if JSON file exists
+          if [ -f "./data/leaderboard_raw.jsonnet" ]; then
+            echo "Processing leaderboard data..."
 
-            cat ./data/participants.csv | llm prompt -m claude-3-haiku -s "
-            You are tasked with creating a leaderboard from participant data in CSV format.
+            cat ./data/leaderboard_raw.jsonnet | llm prompt -m claude-3-haiku -s "
+            You are tasked with creating a leaderboard from participant data in JSON format.
 
-            Please analyze the CSV data and generate:
+            Please analyze the JSON data and generate:
             1. A ranked leaderboard showing participant rankings
             2. Summary statistics (total participants, completion rates, etc.)
             3. Progress breakdown by challenge phase
@@ -53,14 +53,14 @@ jobs:
             Format the output as clean, readable markdown that could be used in a README or website.
             Include appropriate emojis and formatting to make it engaging.
 
-            CSV Data:
+            JSON Data:
             " > leaderboard.md
 
             echo "Leaderboard generated successfully!"
             cat leaderboard.md
           else
-            echo "No CSV file found. Skipping leaderboard generation."
-            echo "Expected file: ./data/participants.csv"
+            echo "No JSON file found. Skipping leaderboard generation."
+            echo "Expected file: ./data/leaderboard_raw.jsonnet"
           fi
 
       - name: Upload leaderboard

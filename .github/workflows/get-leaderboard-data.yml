@@ -1,0 +1,24 @@
+name: get-leaderboard-data
+run-name:  Get leaderboard data
+
+on:
+  schedule:
+    - cron: '0 9 * * *'
+
+jobs:
+  import-incident-io-catalog:
+    runs-on: ubuntu-latest
+    steps:
+      - id: 'auth'
+        uses: 'google-github-actions/auth@v2'
+        with:
+          credentials_json: '${{ secrets.GCP_CREDENTIALS }}'
+
+      - name: Setup gcloud CLI
+        uses: google-github-actions/setup-gcloud@v2
+
+      - name: Install bq client
+        run: gcloud components install bq --quiet
+
+      - name: Create leaderboard_raw JSON file
+        run: bq query --format=json --max_rows=5000 --use_legacy_sql=false --headless --project_id=sap-ems-datastudio-queries <"$(pwd)"/bq_leaderboard.sql > "$(pwd)"/leaderboard_raw.jsonnet

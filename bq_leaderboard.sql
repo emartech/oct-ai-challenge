@@ -1,0 +1,1 @@
+SELECT ROW_NUMBER() OVER() as place, email_address as username, sum_of_points as points FROM `sap-opc.oct_ai.leaderboard` ORDER BY sum_of_points;
