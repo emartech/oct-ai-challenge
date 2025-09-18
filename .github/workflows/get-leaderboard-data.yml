@@ -32,14 +32,14 @@ jobs:
           cat bq_leaderboard.sql
 
           echo "Running BigQuery command..."
-          if bq query --format=json --max_rows=5000 --use_legacy_sql=false --headless --project_id=sap-ems-datastudio-queries <"$(pwd)"/bq_leaderboard.sql > "$(pwd)"/leaderboard_raw.jsonnet 2>&1; then
+          if bq query --format=json --max_rows=5000 --use_legacy_sql=false --headless --project_id=sap-opc <"$(pwd)"/bq_leaderboard.sql > "$(pwd)"/leaderboard_raw.jsonnet 2>&1; then
             echo "BigQuery command succeeded"
             echo "Generated file:"
             ls -la leaderboard_raw.jsonnet
             cat leaderboard_raw.jsonnet
           else
             echo "BigQuery command failed with error:"
-            bq query --format=json --max_rows=5000 --use_legacy_sql=false --headless --project_id=sap-ems-datastudio-queries <"$(pwd)"/bq_leaderboard.sql 2>&1 || true
+            bq query --format=json --max_rows=5000 --use_legacy_sql=false --headless --project_id=sap-opc <"$(pwd)"/bq_leaderboard.sql 2>&1 || true
             echo "Checking if file was created anyway:"
             ls -la leaderboard_raw.jsonnet || echo "No file created"
             exit 1
